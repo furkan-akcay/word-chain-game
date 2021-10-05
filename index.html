@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Word Chain</title>
+        <script src="https://unpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="header">
+                <div>
+                    <button @click="startGame">Start</button>
+                    {{timerCount}}
+                </div>
+                <input
+                    id="input"
+                    type="text"
+                    v-model="input.value"
+                    :placeholder="input.placeholder"
+                    @keypress.enter="addWordToList"
+                    :disabled="input.disabled == 1"
+                />
+                <div class="error">{{ERROR}}</div>
+            </div>
+
+            <div class="wordlist">
+                <div v-for="(word,index) in wordList" :key="index">
+                    <a :href="DICT+word" target="_blank">{{word}}</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
