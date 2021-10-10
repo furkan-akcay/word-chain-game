@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: 1.2rem;
 
     --color-background: white;
     --color-text: #465ef0;
@@ -25,23 +26,20 @@ body {
     max-width: 1200px;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
+header {
+    width: 100%;
+    max-width: 300px;
 
-    div {
-        display: flex;
-        justify-content: space-between;
-        text-align: center;
-        font-size: 2rem;
-
+    header {
         button {
-            padding: 0 1rem;
-            background-color: var(--color-button);
+            width: 100%;
+            padding: 10px 0;
             color: white;
-            border: 1px solid #fff;
-            border-radius: 10px;
+            background-color: var(--color-button);
+            border: 1px solid var(--color-button);
+            border-radius: 5px;
             text-transform: uppercase;
+
             cursor: pointer;
 
             &:hover {
@@ -50,44 +48,43 @@ body {
         }
     }
 
-    input {
-        margin-top: 1rem;
-        padding: 0.5rem 1.2rem;
-        font-size: 1.5rem;
-        color: var(--color-text);
-        border-radius: 25px;
-        border: 1px solid #597183;
-
-        &:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4);
-        }
+    section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
     }
 
-    .error {
-        display: flex;
-        align-items: center;
-        height: 25px;
-        padding-top: 1rem;
-        width: 100%;
-        font-size: 0.8rem;
-        color: red;
+    footer {
+        input {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .error {
+            padding-top: 10px;
+            color: red;
+            font-size: 0.8rem;
+        }
     }
 }
 
 .wordlist {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    margin-top: 20px;
 
     div {
-        padding: 1rem;
+        margin: 0 20px;
 
         a {
-            color: var(--color-text);
             text-decoration: none;
-            font-size: 1.1rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

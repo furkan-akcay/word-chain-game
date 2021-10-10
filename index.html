@@ -7,31 +7,49 @@
         <title>Word Chain</title>
         <script src="https://unpkg.com/vue@next"></script>
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/hint.min.css" />
     </head>
 
     <body>
         <div id="app">
-            <div class="header">
-                <div>
+            <header>
+                <!-- Start button -->
+                <header>
                     <button @click="startGame">Start</button>
-                    {{timerCount}}
-                </div>
-                <input
-                    id="input"
-                    type="text"
-                    v-model="input.value"
-                    :placeholder="input.placeholder"
-                    @keypress.enter="addWordToList"
-                    :disabled="input.disabled == 1"
-                />
-                <div class="error">{{ERROR}}</div>
-            </div>
+                </header>
 
-            <div class="wordlist">
+                <!-- Timer & Score -->
+                <section>
+                    <div>
+                        <span class="hint--top" aria-label="Remaining time">
+                            {{timerCount}}
+                        </span>
+                    </div>
+                    <div>
+                        <span class="hint--top" aria-label="Score">
+                            {{score}}
+                        </span>
+                    </div>
+                </section>
+
+                <!-- Input -->
+                <footer>
+                    <input
+                        type="text"
+                        v-model="input.value"
+                        :placeholder="input.placeholder"
+                        @keypress.enter="addWordToList"
+                        :disabled="input.disabled == 1"
+                    />
+                    <div class="error">{{ERROR}}</div>
+                </footer>
+            </header>
+
+            <section class="wordlist">
                 <div v-for="(word,index) in wordList" :key="index">
                     <a :href="DICT+word" target="_blank">{{word}}</a>
                 </div>
-            </div>
+            </section>
         </div>
 
         <script src="app.js"></script>

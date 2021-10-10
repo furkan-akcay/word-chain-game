@@ -6,6 +6,7 @@ const app = {
             MIN_CHARACTERS: 2,
             wordList: [],
             nextLetter: "",
+            score: 0,
             input: {
                 value: "",
                 placeholder: "",
@@ -21,6 +22,18 @@ const app = {
             this.setPlaceholdersFirstLetterRandom();
             this.timerEnabled = true;
             this.input.disabled = false;
+        },
+        endGame() {
+            alert(`Your score is ${this.score}. Good job!`);
+            this.timerEnabled = false;
+            this.input.disabled = true;
+            this.input.value = "";
+            this.input.placeholder = "";
+            this.ERROR = "";
+            this.score = 0;
+            this.timerCount = 60;
+            this.nextLetter = "";
+            this.wordList = [];
         },
         async addWordToList() {
             if (
@@ -65,6 +78,7 @@ const app = {
             this.input.placeholder = this.nextLetter;
             this.input.value = "";
             this.ERROR = "";
+            this.score = this.score + 1;
         },
         setPlaceholdersFirstLetterRandom() {
             this.input.placeholder =
@@ -103,8 +117,7 @@ const app = {
                     setTimeout(() => this.timerCount--, 1000);
                 }
                 if (value == 0) {
-                    console.log(this.wordList.length);
-                    this.input.disabled = true;
+                    this.endGame();
                 }
             },
         },
