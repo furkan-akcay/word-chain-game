@@ -12,14 +12,8 @@
 
     <body>
         <div id="app">
-            <header>
-                <!-- Start button -->
-                <header>
-                    <button @click="startGame">Start</button>
-                </header>
-
-                <!-- Timer & Score -->
-                <section>
+            <div class="header">
+                <div class="timer-score">
                     <div>
                         <span class="hint--top" aria-label="Remaining time">
                             {{timerCount}}
@@ -30,10 +24,9 @@
                             {{score}}
                         </span>
                     </div>
-                </section>
+                </div>
 
-                <!-- Input -->
-                <footer>
+                <div class="form-element">
                     <input
                         type="text"
                         v-model="input.value"
@@ -42,14 +35,18 @@
                         :disabled="input.disabled == 1"
                     />
                     <div class="error">{{ERROR}}</div>
-                </footer>
-            </header>
+                </div>
 
-            <section class="wordlist">
-                <div v-for="(word,index) in wordList" :key="index">
+                <div v-show="!timerEnabled">
+                    <button class="btn-start" @click="startGame">Start</button>
+                </div>
+            </div>
+
+            <div class="wordlist">
+                <div class="word" v-for="(word,index) in wordList" :key="index">
                     <a :href="DICT+word" target="_blank">{{word}}</a>
                 </div>
-            </section>
+            </div>
         </div>
 
         <script src="app.js"></script>
